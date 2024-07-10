@@ -1,0 +1,34 @@
+---
+import MainLayout from "./MainLayout.astro";
+// import the type utility for the markdown layout props
+import type { MarkdownLayoutProps } from "astro";
+
+// defined the Props type
+type Props = MarkdownLayoutProps<{
+  // Define the expected frontmatter props here
+  title: string;
+  poster: string;
+  subtitle: string;
+}>;
+
+
+const {title, poster, subtitle} = Astro.props.frontmatter
+---
+
+<MainLayout title="">
+  <figure class="figure">
+    <img 
+    src={poster} 
+    alt=""
+    width="480px"
+    height="480px"
+    class="figure__image"
+    >
+    <figcaption class="figure__caption">
+      Poster image for {title.toLowerCase()}
+    </figcaption>
+  </figure>
+  <h1>{title}</h1>
+  <h2>{subtitle}</h2>
+  <slot />
+</MainLayout>

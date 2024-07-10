@@ -2,10 +2,16 @@
 import "../styles/global.css"
 import Footer from "../components/Footer.astro"
 import NavigationBar from "../components/NavigationBar.astro"
+
+interface Props{
+    title: string
+}
+
+const {title} = Astro.props
 ---
 
 <html lang="en" class="dark">
-	<head>
+	<head >
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,7 +22,24 @@ import NavigationBar from "../components/NavigationBar.astro"
         />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+        <title>{title}</title>
+        <script is:inline>
+            const DARK_THEME_CLASS = "dark";
+            const COLOUR_MODE = "COLOUR_MODE";
+            const LIGHT_THEME = "LIGHT";
+            const DARK_THEME = "DARK";
+            const rootEl = document.documentElement;
+            const getInitialColourMode = () => {
+            /** ... */
+            };
+            const initialColourMode = getInitialColourMode();
+            // 👀 remove string type on mode
+            const setInitialColourMode = (mode) => {
+            /** ... */
+            };
+            /** Set the initial colour mode as soon as the script is executed */
+            setInitialColourMode(initialColourMode);
+        </script>
 	</head>
     <NavigationBar/>
 	<body>

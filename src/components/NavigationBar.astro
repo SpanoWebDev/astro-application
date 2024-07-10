@@ -10,12 +10,16 @@ import ThemeToggler from "./ThemeToggler.astro"
 
     <li>
       {/** Link points nowhere for now*/}
-      <a href="#">Philosophies</a>
+      <a href="/philosophies">Philosophies</a>
     </li>
 
     <li>
       {/** Link points nowhere for now*/}
-      <a href="#">Beyond technology</a>
+      <a href="/beyond-tech">Beyond technology</a>
+    </li>
+     <li>
+      {/** Link points nowhere for now*/}
+      <a href="/work-summary">Work summery</a>
     </li>
   </ul>
    <ThemeToggler/>
@@ -52,4 +56,19 @@ import ThemeToggler from "./ThemeToggler.astro"
   a:hover {
     color: var(--grey-900);
   }
+  a.active {
+  background: var(--grey-900);
+  color: var(--background);
+ }
 </style>
+<!-- 📂 src/components/NavigationBar.astro -->
+<script>
+  const { pathname } = window.location;
+  const activeNavigationElement = document.querySelector(
+    `nav a[href="${pathname}"]`
+  );
+
+  if (activeNavigationElement) {
+    activeNavigationElement.classList.add("active");
+  }
+</script>
